@@ -3,7 +3,7 @@ import { ITag } from './tags';
 
 interface IImage extends mongoose.Document {
     url: string;
-    tags: ITag['_id'];
+    tags: Array<ITag['_id']>;
 }
 
 const ImageSchema = new mongoose.Schema({
