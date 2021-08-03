@@ -1,5 +1,9 @@
 import mongoose from 'mongoose';
 
+export interface ITag extends mongoose.Document {
+    tagName: string;
+}
+
 const TagsSchema = new mongoose.Schema({
     tagName: {
         type: String,
@@ -7,4 +11,4 @@ const TagsSchema = new mongoose.Schema({
     }
 });
 
-export const Tag = mongoose.model('Tag', TagsSchema);
+export const Tag = mongoose.model<ITag>('Tag', TagsSchema);

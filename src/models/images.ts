@@ -1,4 +1,10 @@
 import mongoose from 'mongoose';
+import { ITag } from './tags';
+
+interface IImage extends mongoose.Document {
+    url: string;
+    tags: ITag['_id'];
+}
 
 const ImageSchema = new mongoose.Schema({
     url: {
@@ -17,4 +23,4 @@ const ImageSchema = new mongoose.Schema({
     }
 });
 
-export const Image = mongoose.model('Image', ImageSchema);
+export const Image = mongoose.model<IImage>('Image', ImageSchema);
