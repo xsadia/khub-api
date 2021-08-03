@@ -11,7 +11,7 @@ app.use(express.json());
 app.use('/images', imageRouter);
 app.use('/tags', tagRouter);
 
-mongoose.connect('mongodb://localhost:27017/khub', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/khub', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -26,6 +26,6 @@ mongoose.connection.on("connected", (err, res) => {
     console.log("mongoose is connected");
 });
 
-app.listen(3333, () => {
+app.listen(process.env.PORT || 3333, () => {
     console.log('http://localhost:3333');
 });
